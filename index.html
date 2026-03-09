@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestro Duo</title>
+<title>Duo de partida</title>
 
 <style>
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
-text-align:center;
-background:url("fondo.jpg") center/cover no-repeat fixed;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Arial;
 color:white;
+text-align:center;
+background-image:url("fondo.jpg");
+background-size:cover;
+background-position:center;
 }
 
-/* tarjeta */
+/* cajas */
 
 .caja{
-background:rgba(0,0,0,0.65);
-padding:30px;
+background:rgba(0,0,0,0.7);
+padding:40px;
 border-radius:20px;
-max-width:320px;
-margin:120px auto;
-box-shadow:0 0 25px rgba(0,0,0,0.6);
+max-width:420px;
 }
 
-/* boton estilo LOL */
+/* BOTON LOL */
 
 button{
-padding:14px 30px;
+padding:15px 35px;
 font-size:16px;
 letter-spacing:2px;
 border:2px solid #c8aa6e;
@@ -40,8 +43,6 @@ cursor:pointer;
 border-radius:6px;
 margin-top:20px;
 transition:0.3s;
-width:100%;
-max-width:280px;
 }
 
 button:hover{
@@ -49,24 +50,20 @@ box-shadow:0 0 15px #c8aa6e;
 transform:scale(1.05);
 }
 
-/* imagen */
+/* imagenes */
 
 #foto1{
 display:none;
 margin-top:20px;
-width:100%;
-max-width:260px;
+max-width:300px;
 border-radius:15px;
 box-shadow:0 0 20px #c8aa6e;
 }
 
-/* imagen final grande */
-
 #fotoFinal{
 display:none;
 margin-top:20px;
-width:100%;
-max-width:100%;
+max-width:500px; /* imagen más grande */
 border-radius:15px;
 box-shadow:0 0 25px #c8aa6e;
 }
@@ -77,21 +74,12 @@ box-shadow:0 0 25px #c8aa6e;
 display:none;
 }
 
-p{
-font-size:14px;
-line-height:1.4;
-}
-
-h1{
-margin-top:0;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- PANTALLA 1 -->
+<!-- PRIMERA PANTALLA -->
 
 <div class="caja" id="pantalla1">
 
@@ -107,8 +95,6 @@ Siempre siendo la mejor dupla, para todo uno con el otro.
 
 <img id="foto1" src="foto2.jpg">
 
-<br>
-
 <button id="btnExtra" onclick="mostrarFinal()" style="display:none;">
 VER RECOMPENSA DE PARTIDA
 </button>
@@ -116,7 +102,7 @@ VER RECOMPENSA DE PARTIDA
 </div>
 
 
-<!-- PANTALLA FINAL -->
+<!-- SEGUNDA PANTALLA -->
 
 <div class="caja" id="pantallaFinal">
 
@@ -154,7 +140,7 @@ document.getElementById("foto1").style.display="block";
 let audio1 = document.getElementById("audio1");
 let audio2 = document.getElementById("audio2");
 
-/* empiezan juntos */
+/* empiezan al mismo tiempo */
 
 audio1.play();
 audio2.play();
@@ -176,7 +162,11 @@ boton.innerText = "PARTIDA ENCONTRADA";
 
 function mostrarFinal(){
 
+/* detener repetición del sonido2 */
+
 clearInterval(repetirSonido);
+
+/* detener audios anteriores */
 
 let audio1 = document.getElementById("audio1");
 let audio2 = document.getElementById("audio2");
@@ -187,9 +177,17 @@ audio2.pause();
 audio1.currentTime = 0;
 audio2.currentTime = 0;
 
+/* ocultar pantalla inicial */
+
 document.getElementById("pantalla1").style.display="none";
+
+/* mostrar segunda pantalla */
+
 document.getElementById("pantallaFinal").style.display="block";
+
 document.getElementById("fotoFinal").style.display="block";
+
+/* reproducir sonido final */
 
 document.getElementById("audio3").play();
 
