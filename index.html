@@ -3,38 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Duo de partida</title>
+<title>Nuestro Duo</title>
 
 <style>
-
 body{
 margin:0;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:Arial;
-color:white;
+font-family:Arial, sans-serif;
 text-align:center;
-background-image:url("fondo.jpg");
-background-size:cover;
-background-position:center;
-padding:20px;
+background:url("foto1.jpg") center/cover no-repeat fixed;
+color:white;
 }
 
-/* cajas */
-
-.caja{
-background:rgba(0,0,0,0.75);
-padding:25px;
+/* tarjeta estilo lol */
+.card{
+background:rgba(0,0,0,0.65);
+padding:30px;
 border-radius:20px;
-width:90vw;
-max-width:420px;
-backdrop-filter:blur(5px);
+max-width:320px;
+margin:120px auto;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
 }
 
-/* BOTON LOL */
+/* boton estilo buscar partida */
+button{
+padding:14px 30px;
+font-size:16px;
+letter-spacing:2px;
+border:2px solid #c8aa6e;
+background:linear-gradient(#1e2328,#0a0e13);
+color:#c8aa6e;
+cursor:pointer;
+border-radius:6px;
+margin-top:20px;
+transition:0.3s;
+}
 
+button:hover{
+box-shadow:0 0 15px #c8aa6e;
+transform:scale(1.05);
+}
+
+/* imagenes */
+#foto1{
+display:none;
+margin-top:20px;
+max-width:300px;
+border-radius:15px;
+box-shadow:0 0 20px #c8aa6e;
+}
+
+#foto2{
+display:none;
+margin-top:20px;
+max-width:320px;
+border-radius:15px;
+box-shadow:0 0 20px #c8aa6e;
+}
+
+/* imagen final más grande */
+#fotoFinal{
+display:none;
+margin-top:20px;
+max-width:80%;
+border-radius:20px;
+box-shadow:0 0 25px #c8aa6e;
+}
+
+/* pantalla final */
+#pantallaFinal{
+display:none;
+padding:40px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="pantalla1" class="card">
+<h1>Nuestro Duo</h1>
+<p>Siempre siendo la mejor dupla, para todo uno con el otro.</p>
+
+<button onclick="buscarPartida()">BUSCAR PARTIDA</button>
+
+<br>
+<img id="foto1" src="foto2.jpg">
+
+<br>
+<button id="btnFoto2" onclick="mostrarFoto2()" style="display:none;">
+Siguiente
+</button>
+
+<br>
+<img id="foto2" src="foto3.jpg">
+
+<br>
+<button id="btnFinal" onclick="irFinal()" style="display:none;">
+Ir a la dedicatoria
+</button>
+</div>
+
+<div id="pantallaFinal">
+<h1>Para mi duo </h1>
+
+<img id="fotoFinal" src="foto4.jpg">
+
+<p style="font-size:20px;margin-top:20px;">
+Siempre seremos la mejor dupla,<br>
+ en la grieta.<br>
+Gracias por cada momento juntos.
+</p>
+</div>
+
+<audio id="audio1" src="audio1.mp3"></audio>
+<audio id="audio2" src="audio2.mp3"></audio>
+
+<script>
+
+function buscarPartida(){
+
+let a1=document.getElementById("audio1");
+let a2=document.getElementById("audio2");
+
+a1.play();
+a2.play();
+
+/* repetir audio2 cada 3 segundos */
+setInterval(()=>{
+a2.currentTime=0;
+a2.play();
+},3000);
+
+document.getElementById("foto1").style.display="block";
+document.getElementById("btnFoto2").style.display="inline-block";
+}
+
+function mostrarFoto2(){
+document.getElementById("foto2").style.display="block";
+document.getElementById("btnFinal").style.display="inline-block";
+}
+
+function irFinal(){
+document.getElementById("pantalla1").style.display="none";
+document.getElementById("pantallaFinal").style.display="block";
+document.body.style.background="black";
+}
+
+</script>
+
+</body>
+</html>
 button{
 padding:14px 30px;
 font-size:15px;
